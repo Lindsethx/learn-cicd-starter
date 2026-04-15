@@ -46,6 +46,8 @@ func main() {
 
 	// https://github.com/libsql/libsql-client-go/#open-a-connection-to-sqld
 	// libsql://[your-database].turso.io?authToken=[your-auth-token]
+	log.Println("DATABASE_URL:", os.Getenv("DATABASE_URL"))
+
 	dbURL := os.Getenv("DATABASE_URL")
 	if dbURL == "" {
 		log.Println("DATABASE_URL environment variable is not set")
@@ -53,6 +55,7 @@ func main() {
 	} else {
 		db, err := sql.Open("libsql", dbURL)
 		if err != nil {
+			log.Printf("failed to execute SQL: %v", err)
 			log.Fatal(err)
 		}
 		dbQueries := database.New(db)
@@ -103,4 +106,5 @@ func main() {
 
 	log.Printf("Serving on port: %d\n", portInt)
 	log.Fatal(srv.ListenAndServe())
+
 }
