@@ -64,7 +64,7 @@ func main() {
 		MaxAge:           300,
 	}))
 
-	router.Get("/", func--,m,(w http.ResponseWriter, r *http.Request) {
+	router.Get("/", func(w http.ResponseWriter, r *http.Request) {
 		f, err := staticFiles.Open("static/index.html")
 		if err != nil {
 			http.Error(w, err.Error(), http.StatusInternalServerError)
