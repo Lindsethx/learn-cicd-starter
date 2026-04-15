@@ -55,7 +55,6 @@ func main() {
 	} else {
 		db, err := sql.Open("libsql", dbURL)
 		if err != nil {
-			log.Printf("failed to execute SQL: %v", err)
 			log.Fatal(err)
 		}
 		dbQueries := database.New(db)

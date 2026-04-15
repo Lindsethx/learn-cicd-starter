@@ -6,4 +6,3 @@ fi
 
 cd sql/schema
 goose turso $DATABASE_URL up
-echo "Running migrations on: $DATABASE_URL"
